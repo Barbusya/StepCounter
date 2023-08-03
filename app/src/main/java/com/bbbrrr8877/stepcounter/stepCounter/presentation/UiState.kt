@@ -2,7 +2,7 @@ package com.bbbrrr8877.stepcounter.stepCounter.presentation
 
 sealed class UiState {
 
-    class Success: UiState() {
+    class Success : UiState() {
 
     }
 
