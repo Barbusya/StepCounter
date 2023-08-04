@@ -8,11 +8,11 @@ sealed class CountOfStepsResult {
 
     abstract fun <T> map(mapper: Mapper<T>): T
 
-    data class Success(private val stepsCount: StepsCount) : CountOfStepsResult() {
-        override fun <T> map(mapper: Mapper<T>): T = mapper.map(stepsCount, "")
+    data class Success(private val stepsCount: Float = 0F ) : CountOfStepsResult() {
+        override fun <T> map(mapper: Mapper<T>): T = mapper.map((StepsCount(stepsCount)), "")
     }
 
-    class Failure(private val stepsCount: Float = 0F, private val message: String): CountOfStepsResult() {
+    data class Failure(private val stepsCount: Float = 0F, private val message: String): CountOfStepsResult() {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(StepsCount(stepsCount), message)
     }
 }

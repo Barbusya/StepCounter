@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StepCounter</string>
+    <string name="sensor_no_permission">Sensor has no permission</string>
 </resources>

@@ -9,15 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bbbrrr8877.stepcounter.ShowFragment
 import com.bbbrrr8877.stepcounter.databinding.FragmentCounterBinding
 
 class StepCounterFragment : Fragment() {
+
+    private var showFragment: ShowFragment = ShowFragment.Empty()
 
     private var _binding: FragmentCounterBinding? = null
 
     private var stepsCount = 0f
     private val binding: FragmentCounterBinding
         get() = _binding ?: throw RuntimeException("FragmentCounterBinding == null")
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        showFragment = context as ShowFragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +47,11 @@ class StepCounterFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        showFragment = ShowFragment.Empty()
     }
 
 }
